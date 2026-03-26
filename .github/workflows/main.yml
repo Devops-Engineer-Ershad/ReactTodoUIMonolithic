@@ -43,7 +43,7 @@ jobs:
           name: React-App-${{ github.run_id }}
           path: react-app                       
 
-      - name: Copy Files via SCP
+      - name: Copy files via SSH
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.AZHOST }}
@@ -54,7 +54,7 @@ jobs:
           target: /var/www/html/
           strip_components: 1                    
           
-      - name: Restart Nginx
+      - name: SSH Remote Commands
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.AZHOST }}
